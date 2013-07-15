@@ -4,15 +4,15 @@ Raspi Runner is a <b>BASH</b> script which will <b>run all your commands deliver
 
 Prerequisites
 ============
-1. Account on <a href='http://ifttt.com'>IFTTT.com</a> - wicked sevice, for automatization!
-2. Setup <a href='https://github.com/andreafabrizi/Dropbox-Uploader'>Dropbox Uploader</a> - script for communication with Dropbox.
-3. <a href='http://dropbox.com'>Dropbox</a> account
+1. Account on <a href='http://ifttt.com' target="_blank">IFTTT.com</a> - wicked sevice, for automatization!
+2. Setup <a href='https://github.com/andreafabrizi/Dropbox-Uploader' target="_blank">Dropbox Uploader</a> - script for communication with Dropbox.
+3. <a href='http://dropbox.com' target="_blank">Dropbox</a> account
 
 Getting started
 ============
 
 <h3>IFTTT Recipe Setup</h3>
-Raspi Runner is using IFTTT service for distributing commands delivered by e-mail to Dropbox. You can find prepared recipe with this functionality here <a href='https://ifttt.com/recipes/105292'>IFTTT Recipe</a>.
+Raspi Runner is using IFTTT service for distributing commands delivered by e-mail to Dropbox. You can find prepared recipe with this functionality here <a href='https://ifttt.com/recipes/105292' target="_blank">IFTTT Recipe</a>.
 
 <h3>Raspi Runner Setup</h3>
 
@@ -82,3 +82,9 @@ and add new entry
 ```bash
 0,5,10,15,20,25,30,35,40,45,50,55 * * * * /home/pi/Dropbox/raspi_runner.sh 2>&1 > /dev/null
 ```
+Getting started
+============
+
+<p>Usage of Raspi Runner is very simple. You just have to send e-mail with your BASH commands to e-mail address trigger@ifttt.com from your e-mail account, which you used for setup of IFTTT.com.</p>
+
+<p>All commands delivered by e-mail to IFTTT.com will be converted to TXT files, which will be stored in folder Raspi_Commands on Dropbox. This folder is checked every 5 minutes by Raspi Runner and if any new file with commands is found, Raspi Runner will execute them. Thats it. Enjoy! ;)</p>
