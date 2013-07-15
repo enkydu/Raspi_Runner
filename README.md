@@ -32,39 +32,44 @@ wget https://raw.github.com/enkydu/raspi_runner/master/raspi_runner.sh
 #!/bin/bash
 #Author: Pavol Salgari
 #Twitter: @enkydu
-#Version: 1.00
+#Version: 1.01
+
+rr_home="/home/pi/Dropbox"
+rr_storage="/home/pi/Dropbox/Raspi_Commands"
+
+cd $rr_home 
 
 #Download new commands delivered by mail from Dropbox to Raspberry Pi folder /home/pi/Dropbox/Raspi_Commands
-/home/pi/Dropbox/dropbox_uploader.sh -q download Raspi_Commands
+$rr_home/dropbox_uploader.sh -q download /Raspi_Commands
 
 # Check for new files on Raspberry Pi 
-files=`ls /home/pi/Dropbox/Raspi_Commands`
+files=`ls $rr_storage`
 
 # Grant rights for executing of delivered commands
 for i in $files
 do
-  chmod +x /home/pi/Dropbox/Raspi_Commands/$i
+	chmod +x $rr_storage/$i
 done
 
 # Run all delivered commands
 for i in $files
 do
-  /home/pi/Dropbox/Raspi_Commands/$i 2>&1 > /dev/null
+	$rr_storage/$i > /dev/null 2>&1
 done
 
 # Remove all commands, which were already executed from Dropbox
 for i in $files
 do
-	/home/pi/Dropbox/dropbox_uploader.sh -q remove /Raspi_Commands/$i
+	$rr_home/dropbox_uploader.sh -q remove /Raspi_Commands/$i
 done
 
 # Remove all commands, which were already executed from Raspberry Pi
-rm /home/pi/Dropbox/Raspi_Commands/*
+rm $rr_storage/*
 ```
 
-<p>Raspi Runner is using few directories:</p>
-<p><b>/home/pi/Dropbox/</b> - directory with installation of Dropbox Uploader & Raspi Runner</p>
-<p><b>/home/pi/Dropbox/Raspi_Commands</b> - directory with delivered files with commands from Dropbox</p>
+<p>Raspi Runner is using two working directories:</p>
+<p><b>rr_home</b> <i>(default: /home/pi/Dropbox/)</i> - directory with installation of Dropbox Uploader & Raspi Runner</p>
+<p><b>rr_storage</b> <i>(default: /home/pi/Dropbox/Raspi_Commands)</i> - directory with delivered files with commands from Dropbox</p>
 
 <i>NOTE: If you wanna change some of these folders, you have to also update these paths in <b>raspi_runner.sh!</b></i>
 
@@ -80,11 +85,11 @@ crontab -e
 and add new entry
 
 ```bash
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * /home/pi/Dropbox/raspi_runner.sh 2>&1 > /dev/null
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /home/pi/Dropbox/raspi_runner.sh > /dev/null 2>&1
 ```
 Usage
 ============
 
 <p>Usage of Raspi Runner is very simple. You just have to send e-mail with your BASH commands to e-mail address trigger@ifttt.com from your e-mail account, which you used for setup of IFTTT.com.</p>
 
-<p>All commands delivered by e-mail to IFTTT.com will be converted to TXT files, which will be stored in folder Raspi_Commands on Dropbox. This folder is checked every 5 minutes by Raspi Runner and if any new file with commands is found, Raspi Runner will execute them. Thats it. Enjoy! ;)</p>
+<p>All commands delivered by e-mail to IFTTT.com will be converted to TXT files, which will be stored in folder Raspi_Commands on Dropbox. This folder is checked every 5 minutes by Raspi Runner and if any new file with commands is found, Raspi Runner will execute it. Thats it. Enjoy! ;)</p>
