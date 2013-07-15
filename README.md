@@ -34,12 +34,12 @@ wget https://raw.github.com/enkydu/raspi_runner/master/raspi_runner.sh
 #Twitter: @enkydu
 #Version: 1.01
 
-rr_home="/home/pi/Dropbox"
-rr_storage="/home/pi/Dropbox/Raspi_Commands"
+rr_home="/home/pi/Raspi_Runner"
+rr_storage="/home/pi/Raspi_Runner/Raspi_Commands"
 
 cd $rr_home 
 
-#Download new commands delivered by mail from Dropbox to Raspberry Pi folder /home/pi/Dropbox/Raspi_Commands
+#Download new commands delivered by mail from Dropbox to Raspberry Pi folder /home/pi/Raspi_Runner/Raspi_Commands
 $rr_home/dropbox_uploader.sh -q download /Raspi_Commands
 
 # Check for new files on Raspberry Pi 
@@ -68,10 +68,8 @@ rm $rr_storage/*
 ```
 
 <p>Raspi Runner is using two working directories:</p>
-<p><b>rr_home</b> <i>(default: /home/pi/Dropbox/)</i> - directory with installation of Dropbox Uploader & Raspi Runner</p>
-<p><b>rr_storage</b> <i>(default: /home/pi/Dropbox/Raspi_Commands)</i> - directory with delivered files with commands from Dropbox</p>
-
-<i>NOTE: If you wanna change some of these folders, you have to also update these paths in <b>raspi_runner.sh!</b></i>
+<p><b>rr_home</b> <i>(default: /home/pi/Raspi_Runner/)</i> - directory with installation of Dropbox Uploader & Raspi Runner. If you wanna use different folder for installation, please change folder path to correct one.</p>
+<p><b>rr_storage</b> <i>(default: /home/pi/Raspi_Runner/Raspi_Commands)</i> - directory with delivered files with commands from Dropbox. <i>NOTE: This folder name has to be changed, if different name of folder will be used on Dropbox servers. This folder is just copy of Dropbox folder, so the names has to be same.</i></p>
 
 <h4>Schedule crontab</h4>
 
@@ -85,7 +83,7 @@ crontab -e
 and add new entry
 
 ```bash
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * /home/pi/Dropbox/raspi_runner.sh > /dev/null 2>&1
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * /home/pi/Raspi_Runner/raspi_runner.sh > /dev/null 2>&1
 ```
 Usage
 ============
