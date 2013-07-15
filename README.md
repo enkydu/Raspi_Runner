@@ -22,7 +22,7 @@ First, clone the repository using git:
 ```bash
 git clone https://github.com/enkydu/raspi_runner
 ```
-or download script manualy with command:
+or download script manually with command:
 ```bash
 wget https://raw.github.com/enkydu/raspi_runner/master/raspi_runner.sh
 ```
