@@ -82,7 +82,7 @@ and add new entry
 ```bash
 0,5,10,15,20,25,30,35,40,45,50,55 * * * * /home/pi/Dropbox/raspi_runner.sh 2>&1 > /dev/null
 ```
-Getting started
+Usage
 ============
 
 <p>Usage of Raspi Runner is very simple. You just have to send e-mail with your BASH commands to e-mail address trigger@ifttt.com from your e-mail account, which you used for setup of IFTTT.com.</p>
