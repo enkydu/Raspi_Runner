@@ -5,7 +5,7 @@ Raspi Runner is a <b>BASH</b> script which will <b>run all your commands deliver
 Prerequisites
 ============
 1. Account on <a href='http://ifttt.com' target="_blank">IFTTT.com</a> - wicked sevice, for automatization!
-2. Setup <a href='https://github.com/andreafabrizi/Dropbox-Uploader' target="_blank">Dropbox Uploader</a> - script for communication with Dropbox.
+2. Setup <a href='https://github.com/andreafabrizi/Dropbox-Uploader' target="_blank">Dropbox Uploader</a> - script for communication with Dropbox. Make sure, that Raspi Runner will be installed in a same folder like Dropbox Uploader!
 3. <a href='http://dropbox.com' target="_blank">Dropbox</a> account
 
 Getting started
