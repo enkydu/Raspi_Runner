@@ -3,12 +3,12 @@
 #Twitter: @enkydu
 #Version: 1.01
 
-rr_home="/home/pi/Dropbox"
-rr_storage="/home/pi/Dropbox/Raspi_Commands"
+rr_home="/home/pi/Raspi_Runner"
+rr_storage="/home/pi/Raspi_Runner/Raspi_Commands"
 
 cd $rr_home 
 
-#Download new commands delivered by mail from Dropbox to Raspberry Pi folder /home/pi/Dropbox/Raspi_Commands
+#Download new commands delivered by mail from Dropbox to Raspberry Pi folder /home/pi/Raspi_Runner/Raspi_Commands
 $rr_home/dropbox_uploader.sh -q download /Raspi_Commands
 
 # Check for new files on Raspberry Pi 
