@@ -1,14 +1,44 @@
 #!/bin/bash
 #Author: Pavol Salgari
 #Twitter: @enkydu
-#Version: 1.03
+#Version: 1.04
 
-rr_home="/home/pi/Raspi_Runner"
-rr_storage="/home/pi/Raspi_Runner/Raspi_Commands"
+# Check location of Raspi Runner
+script_path="$(readlink -f ${BASH_SOURCE[0]})"
+rr_home="$(dirname $script_path)"
 
 cd $rr_home
 
-#Download new scripts delivered by mail from Dropbox to Raspberry Pi folder /home/pi/Raspi_Runner/Raspi_Commands
+# Check if there is any configuration file (raspi_runner.cfg) for Raspi Runner avaliable
+cfg=`ls . | grep raspi_runner.cfg | wc -l`
+
+# If NOT, then create new configuration file
+if [[ $cfg -eq 0 ]]; then
+        echo "You started Raspi Runner for the first time."
+        echo "Please answer few questions, which will be use for creation of config file."
+        echo
+        while (true); do
+        echo -n "What is name of Dropbox folder, for Raspi Runner commands? (i.e. Raspi_Commands): "
+        read rr_storage
+        echo -n "Is name $rr_storage right one? [y/n]: "
+        read answer
+        if [[ $answer == y ]]; then
+                break;
+        fi
+        done
+        echo
+        echo "Your actual Raspi Runner configuration:"
+        echo
+        echo "Installation folder: $rr_home"
+        echo "Dropbox folder name: $rr_storage"
+        echo "Your local copy of Dropbox folder: $rr_home/$rr_storage"
+        echo "rr_storage=$rr_home/$rr_storage" > raspi_runner.cfg
+fi
+
+# Load configuration file for Raspi Runner
+. raspi_runner.cfg
+
+# Download new scripts delivered by mail from Dropbox to Raspberry Pi folder /home/pi/Raspi_Runner/Raspi_Commands
 $rr_home/dropbox_uploader.sh -q download /Raspi_Commands
 
 # Check for new files on Raspberry Pi
@@ -34,8 +64,8 @@ done
 
 # Push notification by Pushover
 
-#If you are using Pushover, you can recieve push notification, with information, that scripts were executed.
-#Remove hash symbols (#) from following 6 rows, and fill in information regarding APP_TOKEN & USER_KEY, which you recieved from Pushover.com
+# If you are using Pushover, you can recieve push notification, with information, that scripts were executed.
+# Remove hash symbols (#) from following 6 rows, and fill in information regarding APP_TOKEN & USER_KEY, which you recieved from Pushover.com
 
 #time=`date`
 #curl -s \
