@@ -32,6 +32,18 @@ do
 	$rr_storage/$i 2>&1 > /dev/null
 done
 
+# Push notification by Pushover with confirmation of execution
+
+#If you are using Pushover services, you can recieve push notification, with information, that scripts were executed. 
+#Remove hash symbols (#) from following 6 rows, and fill in information regarding APP_TOKEN & USER_KEY, which you recieved from Pushover.com
+
+#time=`date`
+#curl -s \
+#  -F "token=APP_TOKEN" \
+#  -F "user=USER_KEY" \
+#  -F "message=$check script/s were executed at $time." \
+#  https://api.pushover.net/1/messages.json
+
 # Remove all commands, which were already executed from Dropbox
 for i in $files
 do
