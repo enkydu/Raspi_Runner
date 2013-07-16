@@ -29,7 +29,7 @@ or download script manually with command:
 wget https://raw.github.com/enkydu/raspi_runner/master/raspi_runner.sh
 ```
 
-<i><b>NOTE: Dropbox Uploader & Raspi Runner have to be installed in same folder (for example: /home/pi/Raspi_Runner)!</b></i>
+<b>NOTE:</b> Dropbox Uploader & Raspi Runner have to be installed in same folder (for example: /home/pi/Raspi_Runner)!
 
 <h4>raspi_runner.sh</h4> 
 ```bash
@@ -79,7 +79,7 @@ rm $rr_storage/*
 
 <p>Raspi Runner is using two working directories:</p>
 <p><b>rr_home</b> <i>(default: /home/pi/Raspi_Runner/)</i> - directory with installation of Dropbox Uploader & Raspi Runner. If you wanna use different folder for installation, please change folder path to correct one.</p>
-<p><b>rr_storage</b> <i>(default: /home/pi/Raspi_Runner/Raspi_Commands)</i> - directory with delivered files with commands from Dropbox. <i>NOTE: This folder name has to be changed, if different name of folder will be used on Dropbox servers. This folder is just copy of Dropbox folder, so the names has to be same.</i></p>
+<p><b>rr_storage</b> <i>(default: /home/pi/Raspi_Runner/Raspi_Commands)</i> - directory with delivered files with commands from Dropbox.</p> <p><b>NOTE:</b> This folder name has to be changed, if different name of folder will be used on Dropbox servers. This folder is just copy of Dropbox folder, so the names has to be same.</p>
 
 <h4>Schedule crontab</h4>
 
