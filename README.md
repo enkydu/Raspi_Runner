@@ -14,9 +14,11 @@ Getting started
 <h3>IFTTT Recipe Setup</h3>
 Raspi Runner is using IFTTT service for distributing commands delivered by e-mail to Dropbox. You can find prepared recipe with this functionality here <a href='https://ifttt.com/recipes/105292' target="_blank">IFTTT Recipe</a>.
 
-<h3>Raspi Runner Setup</h3>
+<h3>Dropbox Uploader Setup</h3>
+Now you have to setup Dropbox Uploader according to <a href='https://github.com/andreafabrizi/Dropbox-Uploader' target="_blank">user guide here</a>. 
 
-Next step is installation of Raspi Runner. 
+<h3>Raspi Runner Setup</h3>
+Last step is installation of Raspi Runner. 
 
 First, clone the repository using git:
 ```bash
@@ -26,6 +28,8 @@ or download script manually with command:
 ```bash
 wget https://raw.github.com/enkydu/raspi_runner/master/raspi_runner.sh
 ```
+
+<i><b>NOTE: Dropbox Uploader & Raspi Runner have to be installed in same folder (for example: /home/pi/Raspi_Runner)!</b></i>
 
 <h4>raspi_runner.sh</h4> 
 ```bash
