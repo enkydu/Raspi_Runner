@@ -32,7 +32,7 @@ wget https://raw.github.com/enkydu/raspi_runner/master/raspi_runner.sh
 #!/bin/bash
 #Author: Pavol Salgari
 #Twitter: @enkydu
-#Version: 1.01
+#Version: 1.02
 
 rr_home="/home/pi/Raspi_Runner"
 rr_storage="/home/pi/Raspi_Runner/Raspi_Commands"
@@ -43,6 +43,12 @@ cd $rr_home
 $rr_home/dropbox_uploader.sh -q download /Raspi_Commands
 
 # Check for new files on Raspberry Pi 
+check=`ls $rr_storage | wc -l`
+
+if [[ $check -eq 0]];
+	then exit 0
+fi
+
 files=`ls $rr_storage`
 
 # Grant rights for executing of delivered commands
@@ -54,7 +60,7 @@ done
 # Run all delivered commands
 for i in $files
 do
-	$rr_storage/$i > /dev/null 2>&1
+	$rr_storage/$i 2>&1 > /dev/null
 done
 
 # Remove all commands, which were already executed from Dropbox
