@@ -95,7 +95,7 @@ rm $rr_storage/*
 <p><b>rr_storage</b> <i>(default: /home/pi/Raspi_Runner/Raspi_Commands)</i> - directory with delivered files with commands from Dropbox.</p> <p><b>NOTE:</b> This folder name has to be changed, if different name of folder will be used on Dropbox servers. This folder is just copy of Dropbox folder, so the names has to be same.</p>
 
 <h4>Pushover setup</h4>
-You can recieve notification on your smartphone after execution of scripts. This is provided by service <a href='https://pushover.net' target="_blank">Pushover.com</a>. You have to fill in information regarding your APP_TOKEN & USER_KEY and remove hash symbols (#) in front of rows to activate this functionality. 
+You can recieve notification on your smartphone after execution of scripts. This is provided by service <a href='https://pushover.net' target="_blank">Pushover.net</a>. You have to fill in information regarding your APP_TOKEN & USER_KEY and remove hash symbols (#) in front of rows to activate this functionality. 
 
 <h4>Schedule crontab</h4>
 
