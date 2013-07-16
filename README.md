@@ -7,6 +7,7 @@ Prerequisites
 1. Account on <a href='http://ifttt.com' target="_blank">IFTTT.com</a> - wicked sevice, for automatization!
 2. Setup <a href='https://github.com/andreafabrizi/Dropbox-Uploader' target="_blank">Dropbox Uploader</a> - script for communication with Dropbox. Make sure, that Raspi Runner will be installed in a same folder like Dropbox Uploader!
 3. <a href='http://dropbox.com' target="_blank">Dropbox</a> account
+4. <a href='https://pushover.net' target="_blank">Pushover</a> account (optional) - if you wanna use notifications delivered to your smartphone
 
 Getting started
 ============
@@ -92,6 +93,9 @@ rm $rr_storage/*
 <p>Raspi Runner is using two working directories:</p>
 <p><b>rr_home</b> <i>(default: /home/pi/Raspi_Runner/)</i> - directory with installation of Dropbox Uploader & Raspi Runner. If you wanna use different folder for installation, please change folder path to correct one.</p>
 <p><b>rr_storage</b> <i>(default: /home/pi/Raspi_Runner/Raspi_Commands)</i> - directory with delivered files with commands from Dropbox.</p> <p><b>NOTE:</b> This folder name has to be changed, if different name of folder will be used on Dropbox servers. This folder is just copy of Dropbox folder, so the names has to be same.</p>
+
+<h4>Pushover setup</h4>
+You can recieve notification on your smartphone after execution of scripts. This is provided by service <a href='https://pushover.net' target="_blank">Pushover.com</a>. You have to fill in information regarding your APP_TOKEN & USER_KEY and remove hash symbols (#) in front of rows to activate this functionality. 
 
 <h4>Schedule crontab</h4>
 
