@@ -14,7 +14,7 @@ $rr_home/dropbox_uploader.sh -q download /Raspi_Commands
 # Check for new files on Raspberry Pi 
 check=`ls $rr_storage | wc -l`
 
-if [[ $check -eq 0]];
+if [[ $check -eq 0 ]];
 	then exit 0
 fi
 
