@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Pavol Salgari
 #Twitter: @enkydu
-#Version: 1.02
+#Version: 1.03
 
 rr_home="/home/pi/Raspi_Runner"
 rr_storage="/home/pi/Raspi_Runner/Raspi_Commands"
