@@ -38,8 +38,8 @@ wget https://raw.github.com/enkydu/raspi_runner/master/raspi_runner.sh
 #Twitter: @enkydu
 #Version: 1.02
 
-rr_home="/home/pi/Raspi_Runner"				#folder with installation of Raspi Runner & Dropbox Uploader
-rr_storage="/home/pi/Raspi_Runner/Raspi_Commands"	#folder with commands delivered by Dropbox
+rr_home="/home/pi/Raspi_Runner"
+rr_storage="/home/pi/Raspi_Runner/Raspi_Commands"
 
 cd $rr_home 
 
@@ -49,7 +49,7 @@ $rr_home/dropbox_uploader.sh -q download /Raspi_Commands
 # Check for new files on Raspberry Pi 
 check=`ls $rr_storage | wc -l`
 
-if [[ $check -eq 0]];
+if [[ $check -eq 0 ]];
 	then exit 0
 fi
 
@@ -66,6 +66,18 @@ for i in $files
 do
 	$rr_storage/$i 2>&1 > /dev/null
 done
+
+# Push notification by Pushover with confirmation of execution
+
+#If you are using Pushover services, you can recieve push notification, with information, that scripts were executed. 
+#Remove hash symbols (#) from following 6 rows, and fill in information regarding APP_TOKEN & USER_KEY, which you recieved from Pushover.com
+
+#time=`date`
+#curl -s \
+#  -F "token=APP_TOKEN" \
+#  -F "user=USER_KEY" \
+#  -F "message=$check script/s were executed at $time." \
+#  https://api.pushover.net/1/messages.json
 
 # Remove all commands, which were already executed from Dropbox
 for i in $files
