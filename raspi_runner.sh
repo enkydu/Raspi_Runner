@@ -87,7 +87,7 @@ done
 #curl -s \
 #  -F "token=APP_TOKEN" \
 #  -F "user=USER_KEY" \
-#  -F "message=$check script/s were executed at $time." \
+#  -F "message=$check script/s executed at $time." \
 #  https://api.pushover.net/1/messages.json > /dev/null 2>&1
 
 # Remove all scripts, which were already executed from Dropbox
