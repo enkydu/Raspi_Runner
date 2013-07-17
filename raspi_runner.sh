@@ -15,23 +15,26 @@ cfg=`ls . | grep raspi_runner.cfg | wc -l`
 # If NOT, then create new configuration file
 if [[ $cfg -eq 0 ]]; then
         echo "You started Raspi Runner for the first time."
-        echo "Please answer few questions, which will be use for creation of config file."
+        echo "Please answer few questions, which will be used for creation of config file."
         echo
-        while (true); do
-        echo -n "What is name of Dropbox folder, for Raspi Runner commands? (i.e. Raspi_Commands): "
-        read rr_storage
-        echo -n "Is name $rr_storage right one? [y/n]: "
-        read answer
-        if [[ $answer == y ]]; then
-                break;
-        fi
-        done
+                        while (true); do
+                                echo -n "What is name of Dropbox folder, for Raspi Runner commands? (i.e. Raspi_Commands): "
+                                read rr_storage
+                                echo -n "Is name $rr_storage right one? [y/n]: "
+                                read answer
+                                        if [[ $answer == y ]]; then
+                                                break;
+                                        fi
+                        done
         echo
         echo "Your actual Raspi Runner configuration:"
-        echo
+        echo "***************************************"
         echo "Installation folder: $rr_home"
         echo "Dropbox folder name: $rr_storage"
+        mkdir $rr_storage
         echo "Your local copy of Dropbox folder: $rr_home/$rr_storage"
+        echo
+        echo
         echo "rr_storage=$rr_home/$rr_storage" > raspi_runner.cfg
 fi
 
@@ -39,7 +42,7 @@ fi
 . raspi_runner.cfg
 
 # Download new scripts delivered by mail from Dropbox to Raspberry Pi folder /home/pi/Raspi_Runner/Raspi_Commands
-$rr_home/dropbox_uploader.sh -q download /Raspi_Commands
+#$rr_home/dropbox_uploader.sh -q download /Raspi_Commands
 
 # Check for new files on Raspberry Pi
 check=`ls $rr_storage | wc -l`
@@ -64,7 +67,7 @@ done
 
 # Push notification by Pushover
 
-# If you are using Pushover, you can recieve push notification, with information, that scripts were executed.
+# If you are using Pushover, you can recieve push notifications, with information, that scripts were executed.
 # Remove hash symbols (#) from following 6 rows, and fill in information regarding APP_TOKEN & USER_KEY, which you recieved from Pushover.com
 
 #time=`date`
@@ -75,10 +78,10 @@ done
 #  https://api.pushover.net/1/messages.json > /dev/null 2>&1
 
 # Remove all scripts, which were already executed from Dropbox
-for i in $files
-do
-        $rr_home/dropbox_uploader.sh -q remove /Raspi_Commands/$i
-done
+#for i in $files
+#do
+#        $rr_home/dropbox_uploader.sh -q remove /Raspi_Commands/$i
+#done
 
 # Remove all scripts, which were already executed from Raspberry Pi
 rm $rr_storage/*
