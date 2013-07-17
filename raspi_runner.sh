@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Pavol Salgari
 #Twitter: @enkydu
-#Version: 1.04
+#Version: 1.05
 
 # Check location of Raspi Runner
 script_path="$(readlink -f ${BASH_SOURCE[0]})"
@@ -19,8 +19,8 @@ if [[ $cfg -eq 0 ]]; then
         echo
                         while (true); do
                                 echo -n "What is name of Dropbox folder, for Raspi Runner commands? (i.e. Raspi_Commands): "
-                                read rr_storage
-                                echo -n "Is name $rr_storage right one? [y/n]: "
+                                read rr_dboxstorage
+                                echo -n "Is name $rr_dboxstorage right one? [y/n]: "
                                 read answer
                                         if [[ $answer == y ]]; then
                                                 break;
@@ -30,19 +30,20 @@ if [[ $cfg -eq 0 ]]; then
         echo "Your actual Raspi Runner configuration:"
         echo "***************************************"
         echo "Installation folder: $rr_home"
-        echo "Dropbox folder name: $rr_storage"
-        mkdir $rr_storage
-        echo "Your local copy of Dropbox folder: $rr_home/$rr_storage"
+        echo "Dropbox folder name: $rr_dboxstorage"
+        echo "Your local copy of Dropbox folder: $rr_home/$rr_dboxstorage"
         echo
         echo
-        echo "rr_storage=$rr_home/$rr_storage" > raspi_runner.cfg
+        mkdir $rr_dboxstorage
+        echo "rr_dboxstorage=$rr_dboxstorage" > raspi_runner.cfg
+        echo "rr_storage=$rr_home/$rr_dboxstorage" >> raspi_runner.cfg
 fi
 
 # Load configuration file for Raspi Runner
 . raspi_runner.cfg
 
 # Download new scripts delivered by mail from Dropbox to Raspberry Pi folder /home/pi/Raspi_Runner/Raspi_Commands
-$rr_home/dropbox_uploader.sh -q download /Raspi_Commands
+$rr_home/dropbox_uploader.sh -q download /$rr_dboxstorage
 
 # Check for new files on Raspberry Pi
 check=`ls $rr_storage | wc -l`
@@ -80,7 +81,7 @@ done
 # Remove all scripts, which were already executed from Dropbox
 for i in $files
 do
-        $rr_home/dropbox_uploader.sh -q remove /Raspi_Commands/$i
+        $rr_home/dropbox_uploader.sh -q remove /$rr_dboxstorage/$i
 done
 
 # Remove all scripts, which were already executed from Raspberry Pi
