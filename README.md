@@ -30,14 +30,35 @@ or download script manually with command:
 wget https://raw.github.com/enkydu/raspi_runner/master/raspi_runner.sh
 ```
 
-<b>NOTE:</b> Dropbox Uploader & Raspi Runner have to be installed in same folder (for example: /home/pi/Raspi_Runner)!
+<b>NOTE:</b> Dropbox Uploader & Raspi Runner have to be installed in same folder!
 
-<p>Raspi Runner is using two working directories:</p>
-<p><b>rr_home</b> <i>(default: /home/pi/Raspi_Runner/)</i> - directory with installation of Dropbox Uploader & Raspi Runner. If you wanna use different folder for installation, please change folder path to correct one.</p>
-<p><b>rr_storage</b> <i>(default: /home/pi/Raspi_Runner/Raspi_Commands)</i> - directory with delivered files with commands from Dropbox.</p> <p><b>NOTE:</b> This folder name has to be changed, if different name of folder will be used on Dropbox servers. This folder is just copy of Dropbox folder, so the names has to be same.</p>
+<h4>Initial setup of Raspi Runner</h4>
+<p>For quick configuration of Raspi Runner, please make script executable</p>
+```bash
+chmod +x raspi_runner.sh
+```
+<p>and start it with command</p>
+```bash
+./raspi_runner.sh
+```
+<p>Raspi Runner will ask you one question regarding your Dropbox folder name, which will be dedicated for Raspi Runner files with scripts.</p>
+<p>After this, Raspi Runner will create <b>raspi_runner.cfg</b> file with configuration, and will show you actual configuration.</p>
+```bash
+./raspi_runner.sh
+You started Raspi Runner for the first time.
+Please answer few questions, which will be used for creation of config file.
 
+What is name of Dropbox folder, for Raspi Runner commands? (i.e. Raspi_Commands): Raspi_Commands
+Is name Raspi_Commands right one? [y/n]: y
+
+Your actual Raspi Runner configuration:
+***************************************
+Installation folder: /home/pi/Raspi_Runner
+Dropbox folder name: Raspi_Commands
+Your local copy of Dropbox folder: /home/pi/Raspi_Runner/Raspi_Commands
+```
 <h4>Pushover setup</h4>
-You can recieve notification on your smartphone after execution of scripts. This is provided by service <a href='https://pushover.net' target="_blank">Pushover.net</a>. You have to fill in information regarding your APP_TOKEN & USER_KEY and remove hash symbols (#) in front of rows to activate this functionality. 
+You can recieve notification on your smartphone after execution of scripts. This is provided by service <a href='https://pushover.net' target="_blank">Pushover.net</a>. You have to fill in information regarding your <b>APP_TOKEN</b> & <b>USER_KEY</b> and remove hash symbols (#) in front of rows to activate this functionality. 
 
 <h4>Schedule crontab</h4>
 
@@ -58,4 +79,4 @@ Usage
 
 <p>Usage of Raspi Runner is very simple. You just have to send e-mail with your BASH commands to e-mail address trigger@ifttt.com from your e-mail account, which you used for setup of IFTTT.com.</p>
 
-<p>All commands delivered by e-mail to IFTTT.com will be converted to TXT files, which will be stored in folder Raspi_Commands on Dropbox. This folder is checked every 5 minutes by Raspi Runner and if any new file with commands is found, Raspi Runner will execute it. Thats it. Enjoy! ;)</p>
+<p>All commands delivered by e-mail to IFTTT.com will be converted to TXT files, which will be stored in folder e.i. Raspi_Commands on Dropbox. This folder is checked every 5 minutes by Raspi Runner and if any new file with commands is found, Raspi Runner will execute it. Thats it. Enjoy! ;)</p>
