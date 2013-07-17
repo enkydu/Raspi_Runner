@@ -42,7 +42,7 @@ fi
 . raspi_runner.cfg
 
 # Download new scripts delivered by mail from Dropbox to Raspberry Pi folder /home/pi/Raspi_Runner/Raspi_Commands
-#$rr_home/dropbox_uploader.sh -q download /Raspi_Commands
+$rr_home/dropbox_uploader.sh -q download /Raspi_Commands
 
 # Check for new files on Raspberry Pi
 check=`ls $rr_storage | wc -l`
@@ -78,10 +78,10 @@ done
 #  https://api.pushover.net/1/messages.json > /dev/null 2>&1
 
 # Remove all scripts, which were already executed from Dropbox
-#for i in $files
-#do
-#        $rr_home/dropbox_uploader.sh -q remove /Raspi_Commands/$i
-#done
+for i in $files
+do
+        $rr_home/dropbox_uploader.sh -q remove /Raspi_Commands/$i
+done
 
 # Remove all scripts, which were already executed from Raspberry Pi
 rm $rr_storage/*
