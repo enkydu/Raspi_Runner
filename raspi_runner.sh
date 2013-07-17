@@ -1,7 +1,7 @@
 #!/bin/bash
 #Author: Pavol Salgari
 #Twitter: @enkydu
-#Version: 1.05
+#Version: 1.06
 
 # Check location of Raspi Runner
 script_path="$(readlink -f ${BASH_SOURCE[0]})"
@@ -20,30 +20,42 @@ if [[ $cfg -eq 0 ]]; then
                         while (true); do
                                 echo -n "What is name of Dropbox folder, for Raspi Runner commands? (i.e. Raspi_Commands): "
                                 read rr_dboxstorage
-                                echo -n "Is name $rr_dboxstorage right one? [y/n]: "
+                                echo -n "what is the full path to your Dropbox Uploader? (i.e. /home/pi/Dropbox_Uploader): "
+                                read rr_dbuploader
+                                echo
+                                echo
+                                echo "Please check, if displayed information are correct."
+                                echo "***************************************************"
+                                echo "Name of Dropbox folder: $rr_dboxstorage"
+                                echo "Full path to Dropbox Uploader installation: $rr_dbuploader"
+                                echo
+                                echo -n "Are these values correct? [y/n]: "
                                 read answer
                                         if [[ $answer == y ]]; then
                                                 break;
                                         fi
                         done
         echo
-        echo "Your actual Raspi Runner configuration:"
+        echo "Raspi Runner setup is finished!"
         echo "***************************************"
-        echo "Installation folder: $rr_home"
-        echo "Dropbox folder name: $rr_dboxstorage"
-        echo "Your local copy of Dropbox folder: $rr_home/$rr_dboxstorage"
+        echo "Please continue with setup of crontab according to README."
+        echo "If you are planning to use Pushover notifications on your smartfone,"
+        echo "please follow instructions in README too. Little changes in Raspi Runner"
+        echo "script will be necessary."
         echo
+        echo "Enjoy!"
         echo
         mkdir $rr_dboxstorage
         echo "rr_dboxstorage=$rr_dboxstorage" > raspi_runner.cfg
         echo "rr_storage=$rr_home/$rr_dboxstorage" >> raspi_runner.cfg
+        echo "rr_dbuploader=$rr_dbuploader" >> raspi_runner.cfg
 fi
 
 # Load configuration file for Raspi Runner
 . raspi_runner.cfg
 
 # Download new scripts delivered by mail from Dropbox to Raspberry Pi folder /home/pi/Raspi_Runner/Raspi_Commands
-$rr_home/dropbox_uploader.sh -q download /$rr_dboxstorage
+$rr_dbuploader/dropbox_uploader.sh -q download /$rr_dboxstorage
 
 # Check for new files on Raspberry Pi
 check=`ls $rr_storage | wc -l`
@@ -81,7 +93,7 @@ done
 # Remove all scripts, which were already executed from Dropbox
 for i in $files
 do
-        $rr_home/dropbox_uploader.sh -q remove /$rr_dboxstorage/$i
+        $rr_dbuploader/dropbox_uploader.sh -q remove /$rr_dboxstorage/$i
 done
 
 # Remove all scripts, which were already executed from Raspberry Pi
