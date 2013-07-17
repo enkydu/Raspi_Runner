@@ -23,11 +23,11 @@ Last step is installation of Raspi Runner.
 
 First, clone the repository using git:
 ```bash
-git clone https://github.com/enkydu/raspi_runner
+git clone https://github.com/enkydu/Raspi_Runner
 ```
 or download script manually with command:
 ```bash
-wget https://raw.github.com/enkydu/raspi_runner/master/raspi_runner.sh
+wget https://raw.github.com/enkydu/Raspi_Runner/master/raspi_runner.sh
 ```
 
 <b>NOTE:</b> Dropbox Uploader & Raspi Runner have to be installed in same folder!
