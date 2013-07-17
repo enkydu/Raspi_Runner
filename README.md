@@ -2,7 +2,7 @@ Raspi Runner
 ============
 Raspi Runner is a <b>BASH</b> script which will <b>run all your commands delivered by e-mail</b>. I created this script for my Raspberry Pi, because it is always up and online waiting for commands. But this script can be of course used by any Unix based system with bash shell. 
 
-Prerequisites
+Requirements
 ============
 1. Account on <a href='http://ifttt.com' target="_blank">IFTTT.com</a> - wicked sevice, for automatization!
 2. Setup <a href='https://github.com/andreafabrizi/Dropbox-Uploader' target="_blank">Dropbox Uploader</a> - script for communication with Dropbox. Make sure, that Raspi Runner will be installed in a same folder like Dropbox Uploader!
