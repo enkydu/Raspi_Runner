@@ -30,8 +30,6 @@ or download script manually with command:
 wget https://raw.github.com/enkydu/Raspi_Runner/master/raspi_runner.sh
 ```
 
-<b>NOTE:</b> Dropbox Uploader & Raspi Runner have to be installed in same folder!
-
 <h4>Initial setup of Raspi Runner</h4>
 <p>For quick configuration of Raspi Runner, please make script executable</p>
 ```bash
@@ -41,21 +39,32 @@ chmod +x raspi_runner.sh
 ```bash
 ./raspi_runner.sh
 ```
-<p>Raspi Runner will ask you one question regarding your Dropbox folder name, which will be dedicated for Raspi Runner files with scripts.</p>
-<p>After this, Raspi Runner will create <b>raspi_runner.cfg</b> file with configuration, and will show you actual configuration.</p>
+<p>Raspi Runner will ask you few questions during initial setup.</p>
+<p>After this, Raspi Runner will create <b>raspi_runner.cfg</b> file with configuration.</p>
 ```bash
 ./raspi_runner.sh
 You started Raspi Runner for the first time.
 Please answer few questions, which will be used for creation of config file.
 
 What is name of Dropbox folder, for Raspi Runner commands? (i.e. Raspi_Commands): Raspi_Commands
-Is name Raspi_Commands right one? [y/n]: y
+what is the full path to your Dropbox Uploader? (i.e. /home/pi/Dropbox_Uploader): /home/pi/Dropbox_Uploader
 
-Your actual Raspi Runner configuration:
+
+Please check, if displayed information are correct.
+***************************************************
+Name of Dropbox folder: Raspi_Commands
+Full path to Dropbox Uploader installation: /home/pi/Dropbox_Uploader
+
+Are these values correct? [y/n]: y
+
+Raspi Runner setup is finished!
 ***************************************
-Installation folder: /home/pi/Raspi_Runner
-Dropbox folder name: Raspi_Commands
-Your local copy of Dropbox folder: /home/pi/Raspi_Runner/Raspi_Commands
+Please continue with setup of crontab according to README.
+If you are planning to use Pushover notifications on your smartfone,
+please follow instructions in README too. Little changes in Raspi Runner
+script will be necessary.
+
+Enjoy!
 ```
 <h4>Pushover setup</h4>
 You can recieve notification on your smartphone after execution of scripts. This is provided by service <a href='https://pushover.net' target="_blank">Pushover.net</a>. You have to fill in information regarding your <b>APP_TOKEN</b> & <b>USER_KEY</b> and remove hash symbols (#) in front of rows to activate this functionality. 
