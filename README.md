@@ -7,7 +7,7 @@ Requirements
 1. Account on <a href='http://ifttt.com' target="_blank">IFTTT.com</a> - wicked sevice, for automatization!
 2. Setup <a href='https://github.com/andreafabrizi/Dropbox-Uploader' target="_blank">Dropbox Uploader</a> - script for communication with Dropbox. Make sure, that Raspi Runner will be installed in a same folder like Dropbox Uploader!
 3. <a href='http://dropbox.com' target="_blank">Dropbox</a> account
-4. <a href='https://pushover.net' target="_blank">Pushover</a> account (optional) - if you wanna use notifications delivered to your smartphone
+4. <a href='https://pushover.net' target="_blank">Pushover</a> or free <a href='https://pushbullet.com' target="_blank">Pushbullet</a> account (optional) - if you wanna use notifications delivered to your smartphone
 
 Getting started
 ============
@@ -81,7 +81,7 @@ crontab -e
 and add new entry
 
 ```bash
-0,5,10,15,20,25,30,35,40,45,50,55 * * * * /home/pi/Raspi_Runner/raspi_runner.sh > /dev/null 2>&1
+*/5 * * * * /home/pi/Raspi_Runner/raspi_runner.sh > /dev/null 2>&1
 ```
 Usage
 ============
