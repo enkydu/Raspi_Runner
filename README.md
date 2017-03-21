@@ -32,15 +32,18 @@ wget https://raw.github.com/enkydu/Raspi_Runner/master/raspi_runner.sh
 
 <h4>Initial setup of Raspi Runner</h4>
 <p>For quick configuration of Raspi Runner, please make script executable</p>
+
 ```bash
 chmod +x raspi_runner.sh
 ```
 <p>and start it with command</p>
+
 ```bash
 ./raspi_runner.sh
 ```
 <p>Raspi Runner will ask you few questions during initial setup.</p>
 <p>After this, Raspi Runner will create <b>raspi_runner.cfg</b> file with configuration.</p>
+
 ```bash
 ./raspi_runner.sh
 You started Raspi Runner for the first time.
@@ -86,6 +89,6 @@ and add new entry
 Usage
 ============
 
-<p>Usage of Raspi Runner is very simple. You just have to send e-mail with your BASH commands to e-mail address trigger@ifttt.com from your e-mail account, which you used for setup of IFTTT.com.</p>
+<p>Usage of Raspi Runner is very simple. You just have to send e-mail with your BASH commands to e-mail address trigger@recipe.ifttt.com. from your e-mail account, which you used for setup of IFTTT.com.</p>
 
 <p>All commands delivered by e-mail to IFTTT.com will be converted to TXT files, which will be stored in folder e.i. Raspi_Commands on Dropbox. This folder is checked every 5 minutes by Raspi Runner and if any new file with commands is found, Raspi Runner will execute it. Thats it. Enjoy! ;)</p>
